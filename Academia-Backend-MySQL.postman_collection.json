@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "a00f0b99-69d7-46bc-9627-006fc745805e",
+		"name": "Academia-Backend-MySQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Raíz /",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/linea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"linea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert TIPO_LINEA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/linea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"linea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " Verificar cantidad de registros TIPO_LINEA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/linea/registros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"linea",
+						"registros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar activos e inactivos TIPO_LINEA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/linea/activos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"linea",
+						"activos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT TIPO_MARCA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/marca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"marca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar cantidad de registros TIPO_MARCA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/marca/registros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"marca",
+						"registros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear registro adicional TIPO_MARCA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/marca/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"marca",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar registro TIPO_MARCA",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/marca/eliminar/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"marca",
+						"eliminar",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert VEHICULOS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar cantidad de registros VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/registros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"registros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modelo máximo y mínimo VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/modelo-max-min",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"modelo-max-min"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar FECHA_VEN_SEGURO VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/vehiculo/fecha-ven-seguro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"vehiculo",
+						"fecha-ven-seguro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambia estado de los Registros VEHICULOS",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/vehiculo/cambiar/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehiculo",
+						"cambiar",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta  única (1) VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/vehiculo/consulta-unica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehiculo",
+						"consulta-unica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta única estado = 'S' (2) VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/vehiculo/consulta-unica-estado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"vehiculo",
+						"consulta-unica-estado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sumar modelos VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/suma-modelos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"suma-modelos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promedio modelos VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/promedio-modelos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"promedio-modelos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unión de tablas JOIN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/inner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"inner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unión de tables LEFT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/left",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"left"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta única sin campo nulos y con formato (3) VEHICULOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/vehiculo/consulta-unica-formato",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"vehiculo",
+						"consulta-unica-formato"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

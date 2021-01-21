@@ -32,7 +32,7 @@ router.post('/linea', async(req, res) => {
 // Verificar cantidad de registros 
 
 router.get('/linea/registros',(req,res)=>{
-    conection_mysql.query(`SELECT COUNT (*) AS num_registros FROM tipo_linea`, (err,result,fields) =>{
+    cnn_mysql.query(`SELECT COUNT (*) AS num_registros FROM tipo_linea`, (err,result,fields) =>{
         if(err){
             return console.log(err)
         }else if(result[0].num_registros == 20){
@@ -50,7 +50,7 @@ router.get('/linea/activos', (req, res) => {
     cnn_mysql.query(`SELECT COUNT(activo) AS activo FROM tipo_linea WHERE activo = 'S' UNION
     SELECT COUNT(activo) FROM tipo_linea WHERE activo = 'N'`, (error, resulset, fields) => {
         if (error) {
-            return res.status(500).send('se presento un error en la base de datos.')
+            return res.status(500).send('¡Error en la base de datos!')
         } else {
             const result = {
                 activos: resulset[0].activo,

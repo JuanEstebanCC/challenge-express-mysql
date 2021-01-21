@@ -10,6 +10,7 @@ const tipo_linea = require('./routes/t_linea')
 const tipo_vehiculos = require('./routes/vehiculos')
 
 
+
 // Uso de morgan y express
 app.use(morgan('dev'));
 app.use(express.json());
@@ -21,7 +22,9 @@ app.use('/api', tipo_linea)
 
 app.use('/api', tipo_vehiculos)
 
-
+app.get('/', (req, res) => {
+  res.send('<h1>Welcome to the API!</h1>');
+});
 
 
 // Iniciar servidor

@@ -21,7 +21,7 @@ router.post("/vehiculo", async (req, res) => {
     fecha_ven_tecnomecanica,
     fecha_ven_contratodo,
   };
-  await db.query("INSERT INTO vehiculos SET ?", [newVehiculo], (err) => {
+  await cnn_mysql.query("INSERT INTO vehiculo SET ?", [newVehiculo], (err) => {
     if (err) {
       console.log(err);
     }
@@ -31,8 +31,8 @@ router.post("/vehiculo", async (req, res) => {
 // Verificar cantidad de registros
 
 router.get("/vehiculo/registros", (req, res) => {
-  conection_mysql.query(
-    `SELECT COUNT (*) AS num_registros FROM vehiculos`,
+  cnn_mysql.query(
+    `SELECT COUNT (*) AS num_registros FROM vehiculo`,
     (err, result, fields) => {
       if (err) {
         return console.log(err);
@@ -74,7 +74,7 @@ router.get("/vehiculo/fecha-ven-seguro", (req, res) => {
   const { inicio_f, fin_f } = req.body;
 
   console.log(inicio_f, fin_f);
-  conection_mysql.query(
+  cnn_mysql.query(
     `SELECT * FROM vehiculo WHERE fecha_ven_seguro 
     BETWEEN ? AND ?`,
     [inicio_f, fin_f],
@@ -107,8 +107,8 @@ router.put("/vehiculo/cambiar/:id", async (req, res) => {
 // Consulta  única 
 router.get("/vehiculo/consulta-unica", (req, res) => {
   cnn_mysql.query(
-    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculos
-    JOIN tipo_linea ON vehiculos.id_linea = tipo_linea.id_linea
+    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculo
+    JOIN tipo_linea ON vehiculo.id_linea = tipo_linea.id_linea
     JOIN tipo_marca ON tipo_linea.id_marca = tipo_marca.id_marca`,
     (error, resulset, fields) => {
       if (error) {
@@ -123,9 +123,7 @@ router.get("/vehiculo/consulta-unica", (req, res) => {
 // Consulta única estado = 'S'
 router.get("/vehiculo/consulta-unica-estado", (req, res) => {
   cnn_mysql.query(
-    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculos
-    JOIN tipo_linea ON vehiculos.id_linea = tipo_linea.id_linea
-    JOIN tipo_marca ON tipo_linea.id_marca = tipo_marca.id_marca WHERE tipo_linea.activo = 'S'`,
+    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculo JOIN tipo_linea ON vehiculo.id_linea = tipo_linea.id_linea JOIN tipo_marca ON tipo_linea.id_marca = tipo_marca.id_marca WHERE tipo_linea.activo = 'S'`,
     (error, resulset, fields) => {
       if (error) {
         return res.status(500).send("¡Error en la base de datos!");
@@ -138,8 +136,8 @@ router.get("/vehiculo/consulta-unica-estado", (req, res) => {
 
 // Sumar modelos
 router.get("/vehiculo/suma-modelos", async (req, res) => {
-  await db.query(
-    "SELECT modelo, COUNT(modelo) AS suma FROM vehiculos GROUP BY modelo",
+  await cnn_mysql.query(
+    "SELECT modelo, COUNT(modelo) AS suma FROM vehiculo GROUP BY modelo",
     (err, rows, field) => {
       if (!err) {
         res.json(rows);
@@ -152,8 +150,8 @@ router.get("/vehiculo/suma-modelos", async (req, res) => {
 
 // Promedio modelos
 router.get("/vehiculo/promedio-modelos", async (req, res) => {
-  await db.query(
-    "SELECT modelo, AVG(cantidad) AS promedio FROM(SELECT modelo, COUNT(modelo) AS cantidad FROM vehiculos GROUP BY modelo) AS promedio",
+  await cnn_mysql.query(
+    "SELECT modelo, AVG(cantidad) AS promedio FROM(SELECT modelo, COUNT(modelo) AS cantidad FROM vehiculo GROUP BY modelo) AS promedio",
     (err, rows, field) => {
       if (!err) {
         res.json(rows);
@@ -166,8 +164,8 @@ router.get("/vehiculo/promedio-modelos", async (req, res) => {
 // Unión de tablas JOIN
 router.get("/vehiculo/inner", (req, res) => {
   cnn_mysql.query(
-    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculos
-    INNER JOIN tipo_linea ON vehiculos.id_linea = tipo_linea.id_linea
+    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculo
+    INNER JOIN tipo_linea ON vehiculo.id_linea = tipo_linea.id_linea
     INNER JOIN tipo_marca ON tipo_linea.id_marca = tipo_marca.id_marca WHERE tipo_linea.activo = 'S'`,
     (error, resulset, fields) => {
       if (error) {
@@ -184,8 +182,8 @@ router.get("/vehiculo/inner", (req, res) => {
 // Unión de tables LEFT
 router.get("/vehiculo/left", (req, res) => {
   cnn_mysql.query(
-    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculos
-    LEFT JOIN tipo_linea ON vehiculos.id_linea = tipo_linea.id_linea
+    `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculo
+    LEFT JOIN tipo_linea ON vehiculo.id_linea = tipo_linea.id_linea
     LEFT JOIN tipo_marca ON tipo_linea.id_marca = tipo_marca.id_marca WHERE tipo_linea.activo = 'S'`,
     (error, resulset, fields) => {
       if (error) {
@@ -201,7 +199,7 @@ router.get("/vehiculo/left", (req, res) => {
 
 //Consulta única sin campo nulos y con formato
 router.get("/vehiculo/consulta-unica-formato", (req, res) => {
-    conection_mysql.query(`SELECT tipo_linea.id_linea, tipo_linea.descripcion_linea, tipo_linea.id_marca, IF(tipo_linea.activo = 'S', 'Activo', 'Inactivo') AS "Activo:" FROM tipo_linea WHERE descripcion_linea IS NOT NULL`,
+    cnn_mysql.query(`SELECT tipo_linea.id_linea, tipo_linea.descripcion_linea, tipo_linea.id_marca, IF(tipo_linea.activo = 'S', 'Activo', 'Inactivo') AS "Activo:" FROM tipo_linea WHERE descripcion_linea IS NOT NULL`,
       (err, result, fields) => {
         if (err) {
           return res.send(err);

@@ -29,7 +29,7 @@ router.post('/marca',async(req,res)=>{
 // Verificar cantidad de registros 
 
 router.get('/marca/registros',(req,res)=>{
-    conection_mysql.query(`SELECT COUNT (*) AS cantidad FROM tipo_marca`, (err,result,fields) =>{
+    cnn_mysql.query(`SELECT COUNT (*) AS cantidad FROM tipo_marca`, (err,result,fields) =>{
         if(err){
             return console.log(err)
         }else if(result[0].cantidad == 5){

@@ -120,7 +120,7 @@ router.get("/vehiculo/consulta-unica", (req, res) => {
   );
 });
 
-// Consulta única estado = 'S'
+// Consulta única estado = 'S' 
 router.get("/vehiculo/consulta-unica-estado", (req, res) => {
   cnn_mysql.query(
     `SELECT nro_placa, modelo, descripcion_linea, descripcion_marca FROM vehiculo JOIN tipo_linea ON vehiculo.id_linea = tipo_linea.id_linea JOIN tipo_marca ON tipo_linea.id_marca = tipo_marca.id_marca WHERE tipo_linea.activo = 'S'`,
